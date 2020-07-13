@@ -1,0 +1,7 @@
+@import "App.module.css"; 
+
+@media screen and (max-width: 900px) {
+    .btn {
+      background-color: black;
+    }
+  }

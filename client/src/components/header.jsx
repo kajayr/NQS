@@ -1,0 +1,100 @@
+import React from "react";
+import { Row, Col, Button } from "reactstrap";
+import styles from "../App.module.css";
+
+const Header = (props) => {
+  return (
+    <Row>
+      <Col>
+        <Button
+          onClick={props.unConfirmedHandler.bind(this)}
+          color="secondary"
+          className={styles.btn}
+          size="md"
+          block
+        >
+          Unconfirmed
+        </Button>
+      </Col>
+      <Col>
+        <Button
+          onClick={props.techScamHandler.bind(this)}
+          color="secondary"
+          className={styles.btn}
+          size="md"
+          block
+        >
+          TechScam MO
+        </Button>
+      </Col>
+      <Col>
+        <Button
+          onClick={props.pts.bind(this)}
+          color="secondary"
+          className={styles.btn}
+          size="md"
+          block
+        >
+          3PTS
+        </Button>
+      </Col>
+      <Col>
+        <Button
+          onClick={props.phishingHandler.bind(this)}
+          color="secondary"
+          className={styles.btn}
+          size="md"
+          block
+        >
+          Phishing
+        </Button>
+      </Col>
+      <Col>
+        <Button
+          onClick={props.techscamMainHandler.bind(this)}
+          color="secondary"
+          className={styles.btn}
+          size="md"
+          block
+        >
+          Techscam
+        </Button>
+      </Col>
+      <Col>
+        <Button
+          onClick={props.cryptoHandler.bind(this)}
+          color="secondary"
+          className={styles.btn}
+          size="md"
+          block
+        >
+          Crypto
+        </Button>
+      </Col>
+      <Col>
+        <Button
+          onClick={props.deceptiveHandler.bind(this)}
+          color="secondary"
+          className={styles.btn}
+          size="md"
+          block
+        >
+          Deceptive
+        </Button>
+      </Col>
+      <Col>
+        <Button
+          onClick={props.disallowedHandler.bind(this)}
+          color="secondary"
+          className={styles.btn}
+          size="md"
+          block
+        >
+          Disallowed
+        </Button>
+      </Col>
+    </Row>
+  );
+};
+
+export default Header;
