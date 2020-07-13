@@ -11,7 +11,7 @@ import {
   Alert,
 } from "reactstrap";
 
-const Unconfirmed = (props) => {
+const Deceptive = (props) => {
   return (
     <>
       <Form className={styles.unconfirmedBox}>
@@ -49,7 +49,10 @@ const Unconfirmed = (props) => {
               </Row>
             </div>
 
-            <Row className={styles.detailsContext}>
+            <Row
+              style={{ display: props.lpDisplay }}
+              className={styles.detailsContext}
+            >
               <Col md="4.5" className="white">
                 {" "}
                 <Label for="exampleCheckbox">
@@ -78,7 +81,7 @@ const Unconfirmed = (props) => {
                   label="No"
                 />
               </Col>
-              <Col md="4" className="align-self-center white">
+              <Col md="3" className="align-self-center white">
                 {" "}
                 <CustomInput
                   id="exampleCustomRadio3"
@@ -90,7 +93,10 @@ const Unconfirmed = (props) => {
                 />
               </Col>
             </Row>
-            <Row className={styles.detailsContext}>
+            <Row
+              style={{ display: props.lpDisplay }}
+              className={styles.detailsContext}
+            >
               <Col>
                 <CustomInput
                   className={styles.white}
@@ -103,7 +109,10 @@ const Unconfirmed = (props) => {
                 />
               </Col>
             </Row>
-            <Row className={styles.detailsContext}>
+            <Row
+              style={{ display: props.lpDisplay }}
+              className={styles.detailsContext}
+            >
               <Col>
                 <CustomInput
                   className={styles.white}
@@ -111,7 +120,7 @@ const Unconfirmed = (props) => {
                   type="switch"
                   id="exampleCustomSwitch2"
                   name="customSwitch2"
-                  label="Ads, keywords and LP are all related to the campaign."
+                  label="Ads, keywords and LP are NOT related to the campaign."
                   onChange={props.CheckedHandler2}
                 />
               </Col>
@@ -129,19 +138,6 @@ const Unconfirmed = (props) => {
                   style={{ width: "60%" }}
                   onChange={props.reproHandler}
                   type="text"
-                />
-              </Col>
-            </Row>
-            <Row className={styles.detailsContext}>
-              <Col>
-                <CustomInput
-                  className={styles.white}
-                  value="yes"
-                  type="switch"
-                  id="exampleCustomSwitch3"
-                  name="customSwitch3"
-                  label="Premium Service Level account."
-                  onChange={props.CheckedHandler3}
                 />
               </Col>
             </Row>
@@ -169,10 +165,10 @@ const Unconfirmed = (props) => {
               </Col>
             </Row>
             <Row
-              style={{ display: props.reproDisplay }}
+              style={{ display: props.lpDisplay }}
               className={styles.detailsContext}
             >
-              <Col md="12" className="align-self-center white ">
+              <Col style={{ padding: 0 }} md="12">
                 <Alert color="primary">{props.msgAlert}</Alert>
               </Col>
             </Row>
@@ -183,4 +179,4 @@ const Unconfirmed = (props) => {
   );
 };
 
-export default Unconfirmed;
+export default Deceptive;

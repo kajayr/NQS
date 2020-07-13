@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Button } from "reactstrap";
-import styles from "../App.module.css";
+import styles from "../components/App.module.css";
 
 const Header = (props) => {
   return (

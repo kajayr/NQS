@@ -11,7 +11,7 @@ import {
   Alert,
 } from "reactstrap";
 
-const Unconfirmed = (props) => {
+const Phishing = (props) => {
   return (
     <>
       <Form className={styles.unconfirmedBox}>
@@ -111,37 +111,22 @@ const Unconfirmed = (props) => {
                   type="switch"
                   id="exampleCustomSwitch2"
                   name="customSwitch2"
-                  label="Ads, keywords and LP are all related to the campaign."
+                  label="Ads, keywords and LP are NOT related to the campaign."
                   onChange={props.CheckedHandler2}
                 />
               </Col>
             </Row>
-            <Row
-              style={{ display: props.reproDisplay }}
-              className={styles.detailsContext}
-            >
-              <Col md="1.8">
-                <p>URL Repros to:</p>{" "}
+            <Row style={{ display: props.reproDisplay }}>
+              <Col md="3">
+                <span style={{ display: "inline" }}>URL Repros to:</span>{" "}
               </Col>
-              <Col md="10">
+              <Col md="9">
                 <Input
+                  style={{ display: "inline" }}
                   placeholder="hxxps://"
                   style={{ width: "60%" }}
                   onChange={props.reproHandler}
                   type="text"
-                />
-              </Col>
-            </Row>
-            <Row className={styles.detailsContext}>
-              <Col>
-                <CustomInput
-                  className={styles.white}
-                  value="yes"
-                  type="switch"
-                  id="exampleCustomSwitch3"
-                  name="customSwitch3"
-                  label="Premium Service Level account."
-                  onChange={props.CheckedHandler3}
                 />
               </Col>
             </Row>
@@ -168,12 +153,12 @@ const Unconfirmed = (props) => {
                 <Input onChange={props.reviewHandler} type="text" />
               </Col>
             </Row>
-            <Row
-              style={{ display: props.reproDisplay }}
-              className={styles.detailsContext}
-            >
-              <Col md="12" className="align-self-center white ">
-                <Alert color="primary">{props.msgAlert}</Alert>
+            <Row className={styles.detailsContext}>
+              <Col style={{ padding: 0 }} md="12">
+                <Alert color="primary">{props.msgAlertScreenShot}</Alert>
+              </Col>
+              <Col style={{ padding: 0 }} md="12">
+                <Alert color="primary">{props.msgAlertPhishingForm}</Alert>
               </Col>
             </Row>
           </fieldset>
@@ -183,4 +168,4 @@ const Unconfirmed = (props) => {
   );
 };
 
-export default Unconfirmed;
+export default Phishing;

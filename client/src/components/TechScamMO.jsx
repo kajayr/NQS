@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./App.module.css";
+import styles from "../components/App.module.css";
 import {
   Row,
   Col,
@@ -78,7 +78,7 @@ const TechScamMO = (props) => {
                   label="No"
                 />
               </Col>
-              <Col md="3" className="align-self-center white">
+              <Col md="4" className="align-self-center white">
                 {" "}
                 <CustomInput
                   id="exampleCustomRadio3"
@@ -116,15 +116,13 @@ const TechScamMO = (props) => {
                 />
               </Col>
             </Row>
-            <Row
-              style={{ display: props.reproDisplay }}
-              className={styles.detailsContext}
-            >
-              <Col md="1.8">
-                <p>URL Repros to:</p>{" "}
+            <Row style={{ display: props.reproDisplay }}>
+              <Col md="3">
+                <span style={{ display: "inline" }}>URL Repros to:</span>{" "}
               </Col>
-              <Col md="10">
+              <Col md="9">
                 <Input
+                  style={{ display: "inline" }}
                   placeholder="hxxps://"
                   style={{ width: "60%" }}
                   onChange={props.reproHandler}
@@ -157,7 +155,7 @@ const TechScamMO = (props) => {
             </Row>
             <Row className={styles.detailsContext}>
               <Col style={{ padding: 0 }} md="12">
-                <Alert color="primary">{props.msgAlert}</Alert>
+                <Alert color="primary">{props.msgAlertScreenShot}</Alert>
               </Col>
             </Row>
           </fieldset>

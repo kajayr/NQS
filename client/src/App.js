@@ -16,7 +16,11 @@ import Unconfirmed from "./components/unconfirmed";
 import TechScamMO from "./components/TechScamMO";
 import PTS3 from "./components/PTS3";
 import axios from "axios";
-//import DataReport from "./components/report";
+import Phishing from "./components/Phishing";
+import TechScamMain from "./components/TechScamMain";
+import Crypto from "./components/Crypto";
+import Deceptive from "./components/Deceptive";
+import Disallowed from "./components/Deceptive";
 
 class App extends Component {
   constructor(props) {
@@ -47,7 +51,7 @@ class App extends Component {
       showUnconfirmed: false,
       TechScam: false,
       pts: false,
-      pishing: false,
+      phishing: false,
       techscamMain: false,
       crypto: false,
       deceptive: false,
@@ -63,7 +67,9 @@ class App extends Component {
       fliping: "",
       msgTodo: "",
       reproDisplay: "",
-      msgAlert: "",
+      msgAlertScreenShot: "",
+      msgAlertPhishingForm: "",
+      alertShow: "none",
       lpDisplay: "",
     };
     //states
@@ -71,11 +77,9 @@ class App extends Component {
     this.techScamHandler.bind(this);
     this.pts.bind(this);
     this.phishingHandler.bind(this);
-    this.techscamMainHandler.bind(this);
     this.cryptoHandler.bind(this);
     this.deceptiveHandler.bind(this);
     this.disallowedHandler.bind(this);
-    this.techscamMainHandler.bind(this);
     this.sendData.bind(this);
     this.showReport.bind(this);
     this.todos.bind(this);
@@ -218,13 +222,7 @@ class App extends Component {
       this.setState({ isChecked3: false });
     }
   };
-  showReport = () => {
-    this.setState({
-      showData: true,
-      title: "Data Collector",
-      pTitle: "Welcome to Data Collector. Please fill out the required data.",
-    });
-  };
+
   //reset
   resetAllHandler = () => {
     this.setState({
@@ -249,7 +247,7 @@ class App extends Component {
       showUnconfirmed: false,
       TechScam: false,
       pts: false,
-      pishing: false,
+      phishing: false,
       techscamMain: false,
       crypto: false,
       deceptive: false,
@@ -275,6 +273,9 @@ class App extends Component {
       lpDisplay: "block",
       TechScam: false,
       pts: false,
+      showData: false,
+      techscamMain: false,
+      crypto: false,
     });
   };
 
@@ -287,10 +288,13 @@ class App extends Component {
       fliping: "Evidence shown in change history of flipping.",
       msgTodo: "Screenshot of The Landing Page",
       reproDisplay: "block",
-      msgAlert: "Add Screenshot of The Landing Page",
+      msgAlertScreenShot: "Add Screenshot of The Landing Page",
       lpDisplay: "block",
       showUnconfirmed: false,
       pts: false,
+      showData: false,
+      techscamMain: false,
+      crypto: false,
     });
   };
   pts = () => {
@@ -301,6 +305,29 @@ class App extends Component {
       lpDisplay: "none",
       showUnconfirmed: false,
       TechScam: false,
+      showData: false,
+      techscamMain: false,
+      crypto: false,
+    });
+  };
+  phishingHandler = () => {
+    this.setState({
+      phishing: true,
+      title: "Phishing",
+      pTitle: "Impacted for Phishing Confirmed",
+      msgLP: "Ads, keywords and LP are NOT related to the campaign.",
+      fliping: "Evidence shown in change history of flipping.",
+      msgTodo: "Screenshot of The Landing Page",
+      reproDisplay: "block",
+      msgAlertScreenShot: "Add Screenshot of The Landing Page",
+      lpDisplay: "block",
+      msgAlertPhishingForm: "Fill out The Phishing Form",
+      showUnconfirmed: false,
+      TechScam: false,
+      showData: false,
+      techscamMain: false,
+      pts: false,
+      crypto: false,
     });
   };
   techscamMainHandler = () => {
@@ -308,6 +335,18 @@ class App extends Component {
       techscamMain: true,
       title: "Techscam",
       pTitle: "Impacted for Techscam",
+      msgLP: "Ads, keywords and LP are NOT related to the campaign.",
+      fliping: "Evidence shown in change history of flipping.",
+      reproDisplay: "block",
+      lpDisplay: "block",
+      showUnconfirmed: false,
+      TechScam: false,
+      showData: false,
+      pts: false,
+      crypto: false,
+      phishing: false,
+      msgAlertPhishingForm: "Fill out The TechScam Form",
+      msgAlertScreenShot: "Screenshot of The Landing Page",
     });
   };
 
@@ -316,6 +355,16 @@ class App extends Component {
       crypto: true,
       title: "Crypto",
       pTitle: "Impacted for Crypto",
+      lpDisplay: "none",
+      alertShow: "block",
+      showUnconfirmed: false,
+      TechScam: false,
+      showData: false,
+      techscamMain: false,
+      phishing: false,
+      pts: false,
+      msgAlertPhishingForm:
+        "Buying, Selling, Trading, or Exchanging Digital Currency is Disallowed",
     });
   };
   deceptiveHandler = () => {
@@ -323,28 +372,56 @@ class App extends Component {
       deceptive: true,
       title: "Deceptive Products and Services",
       pTitle: "Impacted for Deceptive Products and Services",
+      lpDisplay: "none",
+      alertShow: "none",
+      showUnconfirmed: false,
+      TechScam: false,
+      showData: false,
+      techscamMain: false,
+      phishing: false,
+      pts: false,
+      crypto: false,
     });
   };
   disallowedHandler = () => {
     this.setState({
-      deceptive: true,
+      disallowed: true,
       title: "Disallowed Business / Model",
       pTitle: "Impacted for Disallowed Business / Model",
+      lpDisplay: "none",
+      alertShow: "none",
+      showUnconfirmed: false,
+      TechScam: false,
+      showData: false,
+      techscamMain: false,
+      phishing: false,
+      pts: false,
+      crypto: false,
+      disallowed: false,
     });
   };
-  phishingHandler = () => {
+
+  showReport = () => {
     this.setState({
-      pishing: true,
-      title: "Phishing",
-      pTitle: "Impacted for Phishing Confirmed",
+      showData: true,
+      title: "Data Collector",
+      pTitle: "Welcome to Data Collector. Please fill out the required data.",
+      showUnconfirmed: false,
+      TechScam: false,
+      showData: false,
+      techscamMain: false,
+      phishing: false,
+      pts: false,
+      crypto: false,
+    });
+  };
+  //data
+  ShowDataResult = () => {
+    this.setState({
+      showResult: true,
     });
   };
 
-  ShowDataResult = () => {
-    this.setState({ showResult: true });
-  };
-
-  //data
   componentDidMount = () => {
     this.getData();
   };
@@ -447,7 +524,7 @@ class App extends Component {
                   reproDisplay={this.state.reproDisplay}
                   msgAlert={this.state.msgAlert}
                 />
-              ) : this.state.TechScam ? (
+              ) : this.state.TechScam === true ? (
                 <TechScamMO
                   title={this.state.title}
                   ads1Handler={this.ads1Handler.bind(this)}
@@ -468,7 +545,7 @@ class App extends Component {
                   fliping={this.state.fliping}
                   msgTodo={this.state.msgTodo}
                   reproDisplay={this.state.reproDisplay}
-                  msgAlert={this.state.msgAlert}
+                  msgAlertScreenShot={this.state.msgAlertScreenShot}
                 />
               ) : this.state.showData ? (
                 <div>
@@ -524,7 +601,130 @@ class App extends Component {
                   fliping={this.state.fliping}
                   msgTodo={this.state.msgTodo}
                   reproDisplay={this.state.reproDisplay}
-                  msgAlert={this.state.msgAlert}
+                  msgAlertScreenShot={this.state.msgAlertScreenShot}
+                />
+              ) : this.state.phishing === true ? (
+                <Phishing
+                  title={this.state.title}
+                  ads1Handler={this.ads1Handler.bind(this)}
+                  ads2Handler={this.ads2Handler.bind(this)}
+                  ads3Handler={this.ads3Handler.bind(this)}
+                  binding1Handler={this.binding1Handler.bind(this)}
+                  binding2Handler={this.binding2Handler.bind(this)}
+                  binding3Handler={this.binding3Handler.bind(this)}
+                  lpHandler={this.lpHandler.bind(this)}
+                  CheckedHandler={this.CheckedHandler.bind(this)}
+                  CheckedHandler2={this.CheckedHandler2.bind(this)}
+                  CheckedHandler3={this.CheckedHandler3.bind(this)}
+                  noteHandler={this.noteHandler.bind(this)}
+                  reviewHandler={this.reviewHandler.bind(this)}
+                  reproHandler={this.reproHandler.bind(this)}
+                  todoBtn={this.todos.bind(this)}
+                  todoState={this.state.todo}
+                  fliping={this.state.fliping}
+                  msgTodo={this.state.msgTodo}
+                  msgLP={this.state.msgLP}
+                  reproDisplay={this.state.reproDisplay}
+                  msgAlertScreenShot={this.state.msgAlertScreenShot}
+                  msgAlertPhishingForm={this.state.msgAlertPhishingForm}
+                />
+              ) : this.state.techscamMain ? (
+                <TechScamMain
+                  title={this.state.title}
+                  ads1Handler={this.ads1Handler.bind(this)}
+                  ads2Handler={this.ads2Handler.bind(this)}
+                  ads3Handler={this.ads3Handler.bind(this)}
+                  binding1Handler={this.binding1Handler.bind(this)}
+                  binding2Handler={this.binding2Handler.bind(this)}
+                  binding3Handler={this.binding3Handler.bind(this)}
+                  lpHandler={this.lpHandler.bind(this)}
+                  CheckedHandler={this.CheckedHandler.bind(this)}
+                  CheckedHandler2={this.CheckedHandler2.bind(this)}
+                  CheckedHandler3={this.CheckedHandler3.bind(this)}
+                  noteHandler={this.noteHandler.bind(this)}
+                  reviewHandler={this.reviewHandler.bind(this)}
+                  reproHandler={this.reproHandler.bind(this)}
+                  todoBtn={this.todos.bind(this)}
+                  todoState={this.state.todo}
+                  fliping={this.state.fliping}
+                  msgTodo={this.state.msgTodo}
+                  msgLP={this.state.msgLP}
+                  reproDisplay={this.state.reproDisplay}
+                  msgAlertScreenShot={this.state.msgAlertScreenShot}
+                  msgAlertPhishingForm={this.state.msgAlertPhishingForm}
+                />
+              ) : this.state.crypto ? (
+                <Crypto
+                  title={this.state.title}
+                  ads1Handler={this.ads1Handler.bind(this)}
+                  ads2Handler={this.ads2Handler.bind(this)}
+                  ads3Handler={this.ads3Handler.bind(this)}
+                  binding1Handler={this.binding1Handler.bind(this)}
+                  binding2Handler={this.binding2Handler.bind(this)}
+                  binding3Handler={this.binding3Handler.bind(this)}
+                  lpHandler={this.lpHandler.bind(this)}
+                  lpDisplay={this.state.lpDisplay}
+                  CheckedHandler={this.CheckedHandler.bind(this)}
+                  CheckedHandler2={this.CheckedHandler2.bind(this)}
+                  CheckedHandler3={this.CheckedHandler3.bind(this)}
+                  noteHandler={this.noteHandler.bind(this)}
+                  reviewHandler={this.reviewHandler.bind(this)}
+                  reproHandler={this.reproHandler.bind(this)}
+                  todoBtn={this.todos.bind(this)}
+                  todoState={this.state.todo}
+                  fliping={this.state.fliping}
+                  msgTodo={this.state.msgTodo}
+                  reproDisplay={this.state.reproDisplay}
+                  msgAlertPhishingForm={this.state.msgAlertPhishingForm}
+                  alertShow={this.state.alertShow}
+                />
+              ) : this.state.deceptive ? (
+                <Deceptive
+                  title={this.state.title}
+                  ads1Handler={this.ads1Handler.bind(this)}
+                  ads2Handler={this.ads2Handler.bind(this)}
+                  ads3Handler={this.ads3Handler.bind(this)}
+                  binding1Handler={this.binding1Handler.bind(this)}
+                  binding2Handler={this.binding2Handler.bind(this)}
+                  binding3Handler={this.binding3Handler.bind(this)}
+                  lpHandler={this.lpHandler.bind(this)}
+                  lpDisplay={this.state.lpDisplay}
+                  CheckedHandler={this.CheckedHandler.bind(this)}
+                  CheckedHandler2={this.CheckedHandler2.bind(this)}
+                  CheckedHandler3={this.CheckedHandler3.bind(this)}
+                  noteHandler={this.noteHandler.bind(this)}
+                  reviewHandler={this.reviewHandler.bind(this)}
+                  reproHandler={this.reproHandler.bind(this)}
+                  todoBtn={this.todos.bind(this)}
+                  todoState={this.state.todo}
+                  fliping={this.state.fliping}
+                  msgTodo={this.state.msgTodo}
+                  reproDisplay={this.state.reproDisplay}
+                  msgAlertScreenShot={this.state.msgAlertScreenShot}
+                />
+              ) : this.state.disallowed ? (
+                <Disallowed
+                  title={this.state.title}
+                  ads1Handler={this.ads1Handler.bind(this)}
+                  ads2Handler={this.ads2Handler.bind(this)}
+                  ads3Handler={this.ads3Handler.bind(this)}
+                  binding1Handler={this.binding1Handler.bind(this)}
+                  binding2Handler={this.binding2Handler.bind(this)}
+                  binding3Handler={this.binding3Handler.bind(this)}
+                  lpHandler={this.lpHandler.bind(this)}
+                  lpDisplay={this.state.lpDisplay}
+                  CheckedHandler={this.CheckedHandler.bind(this)}
+                  CheckedHandler2={this.CheckedHandler2.bind(this)}
+                  CheckedHandler3={this.CheckedHandler3.bind(this)}
+                  noteHandler={this.noteHandler.bind(this)}
+                  reviewHandler={this.reviewHandler.bind(this)}
+                  reproHandler={this.reproHandler.bind(this)}
+                  todoBtn={this.todos.bind(this)}
+                  todoState={this.state.todo}
+                  fliping={this.state.fliping}
+                  msgTodo={this.state.msgTodo}
+                  reproDisplay={this.state.reproDisplay}
+                  msgAlertScreenShot={this.state.msgAlertScreenShot}
                 />
               ) : null}
             </div>
@@ -533,7 +733,7 @@ class App extends Component {
             {this.state.showUnconfirmed === true ||
             this.state.TechScam === true ||
             this.state.pts === true ||
-            this.state.pishing === true ||
+            this.state.phishing === true ||
             this.state.techscamMain === true ||
             this.state.crypto === true ||
             this.state.deceptive === true ||
@@ -622,10 +822,10 @@ class App extends Component {
         <Row>
           <Col>
             <Button
-              className={styles.btn}
+              className={styles.btn2}
               onClick={this.resetAllHandler.bind(this)}
               color="secondary"
-              size="md"
+              size="auto"
               block
             >
               Reset
@@ -635,7 +835,7 @@ class App extends Component {
         <Row>
           <Col>
             <Button
-              className={styles.btn}
+              className={styles.btn2}
               onClick={this.showReport.bind(this)}
               color="secondary"
               size="md"
