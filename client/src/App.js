@@ -71,6 +71,7 @@ class App extends Component {
       msgAlertPhishingForm: "",
       alertShow: "none",
       lpDisplay: "",
+      dataCount: 0,
     };
     //states
     this.unConfirmedHandler.bind(this);
@@ -408,7 +409,6 @@ class App extends Component {
       pTitle: "Welcome to Data Collector. Please fill out the required data.",
       showUnconfirmed: false,
       TechScam: false,
-      showData: false,
       techscamMain: false,
       phishing: false,
       pts: false,
@@ -434,6 +434,7 @@ class App extends Component {
     e.preventDefault();
     const payload = {
       title: this.state.inputData,
+      num: this.state.dataCount,
     };
 
     axios({
