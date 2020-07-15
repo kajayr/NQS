@@ -259,14 +259,4 @@ div.col {
     margin-top: 2vh;
     margin-left: 0.5vw;
   }
-
-  .reportPage {
-    width: 80%;
-    background-color: white;
-    opacity: 1;
-    color: black;
-    padding-top: 10px;
-    border-radius: 10px;
-    border: 4px gray double;
-  }
 }
