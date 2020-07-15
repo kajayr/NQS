@@ -277,6 +277,7 @@ class App extends Component {
       showData: false,
       techscamMain: false,
       crypto: false,
+      disallowed: false,
     });
   };
 
@@ -296,6 +297,7 @@ class App extends Component {
       showData: false,
       techscamMain: false,
       crypto: false,
+      disallowed: false,
     });
   };
   pts = () => {
@@ -309,6 +311,7 @@ class App extends Component {
       showData: false,
       techscamMain: false,
       crypto: false,
+      disallowed: false,
     });
   };
   phishingHandler = () => {
@@ -329,6 +332,7 @@ class App extends Component {
       techscamMain: false,
       pts: false,
       crypto: false,
+      disallowed: false,
     });
   };
   techscamMainHandler = () => {
@@ -346,6 +350,7 @@ class App extends Component {
       pts: false,
       crypto: false,
       phishing: false,
+      disallowed: false,
       msgAlertPhishingForm: "Fill out The TechScam Form",
       msgAlertScreenShot: "Screenshot of The Landing Page",
     });
@@ -364,6 +369,7 @@ class App extends Component {
       techscamMain: false,
       phishing: false,
       pts: false,
+      disallowed: false,
       msgAlertPhishingForm:
         "Buying, Selling, Trading, or Exchanging Digital Currency is Disallowed",
     });
@@ -382,6 +388,7 @@ class App extends Component {
       phishing: false,
       pts: false,
       crypto: false,
+      disallowed: false,
     });
   };
   disallowedHandler = () => {
@@ -398,7 +405,6 @@ class App extends Component {
       phishing: false,
       pts: false,
       crypto: false,
-      disallowed: false,
     });
   };
 
@@ -413,6 +419,7 @@ class App extends Component {
       phishing: false,
       pts: false,
       crypto: false,
+      disallowed: false,
     });
   };
   //data

@@ -223,7 +223,7 @@ div.col {
   }
 }
 
-@media screen and (max-width: 1366px) and (max-height: 768px) {
+@media screen and (max-width: 1300px) and (max-height: 775px) {
   .btn {
     width: 13vw;
     height: 6vh;
