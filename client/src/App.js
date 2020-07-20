@@ -65,10 +65,9 @@ class App extends Component {
       todo: "underline",
       msgLP: "",
       fliping: "",
-      msgTodo: "",
       reproDisplay: "",
-      msgAlertScreenShot: "",
-      msgAlertPhishingForm: "",
+      msgAlert1: "",
+      msgAlert2: "",
       alertShow: "none",
       lpDisplay: "",
       dataCount: 0,
@@ -268,16 +267,19 @@ class App extends Component {
         "Unconfirmed. Not enough strong evidence to impact for Phishing or TechScam MO",
       msgLP: "Ads, keywords and LP are all related to the campaign.",
       fliping: "No evidence shown in change history of flipping.",
-      msgTodo: "",
       reproDisplay: "none",
-      msgAlert: "",
       lpDisplay: "block",
+      msgAlert1: "",
+      msgAlert2: "",
       TechScam: false,
       pts: false,
       showData: false,
       techscamMain: false,
       crypto: false,
       disallowed: false,
+      deceptive: false,
+      phishing: false,
+      showResult: false,
     });
   };
 
@@ -288,16 +290,19 @@ class App extends Component {
       pTitle: "Impacted for Phishing TechScam MO",
       msgLP: "Ads, keywords and LP are NOT related to the campaign.",
       fliping: "Evidence shown in change history of flipping.",
-      msgTodo: "Screenshot of The Landing Page",
       reproDisplay: "block",
-      msgAlertScreenShot: "Add Screenshot of The Landing Page",
       lpDisplay: "block",
-      showUnconfirmed: false,
       pts: false,
       showData: false,
       techscamMain: false,
       crypto: false,
       disallowed: false,
+      deceptive: false,
+      phishing: false,
+      showUnconfirmed: false,
+      showResult: false,
+      msgAlert1: "Add Screenshot of The Landing Page",
+      msgAlert2: "",
     });
   };
   pts = () => {
@@ -306,12 +311,17 @@ class App extends Component {
       title: "Third Party Tech Support",
       pTitle: "Impacted for Third Party Tech Support",
       lpDisplay: "none",
-      showUnconfirmed: false,
+      msgAlert1: "",
+      msgAlert2: "",
       TechScam: false,
       showData: false,
       techscamMain: false,
       crypto: false,
       disallowed: false,
+      deceptive: false,
+      phishing: false,
+      showUnconfirmed: false,
+      showResult: false,
     });
   };
   phishingHandler = () => {
@@ -321,18 +331,18 @@ class App extends Component {
       pTitle: "Impacted for Phishing Confirmed",
       msgLP: "Ads, keywords and LP are NOT related to the campaign.",
       fliping: "Evidence shown in change history of flipping.",
-      msgTodo: "Screenshot of The Landing Page",
       reproDisplay: "block",
-      msgAlertScreenShot: "Add Screenshot of The Landing Page",
+      msgAlert1: "Add Screenshot of The Landing Page",
       lpDisplay: "block",
-      msgAlertPhishingForm: "Fill out The Phishing Form",
-      showUnconfirmed: false,
+      msgAlert2: "Fill out The Phishing Form",
       TechScam: false,
       showData: false,
       techscamMain: false,
-      pts: false,
       crypto: false,
       disallowed: false,
+      deceptive: false,
+      showUnconfirmed: false,
+      showResult: false,
     });
   };
   techscamMainHandler = () => {
@@ -344,15 +354,16 @@ class App extends Component {
       fliping: "Evidence shown in change history of flipping.",
       reproDisplay: "block",
       lpDisplay: "block",
-      showUnconfirmed: false,
       TechScam: false,
       showData: false,
-      pts: false,
       crypto: false,
-      phishing: false,
       disallowed: false,
-      msgAlertPhishingForm: "Fill out The TechScam Form",
-      msgAlertScreenShot: "Screenshot of The Landing Page",
+      deceptive: false,
+      phishing: false,
+      showUnconfirmed: false,
+      showResult: false,
+      msgAlert1: "Add Screenshot of The Landing Page",
+      msgAlert2: "Fill out The TechScam Form",
     });
   };
 
@@ -363,14 +374,16 @@ class App extends Component {
       pTitle: "Impacted for Crypto",
       lpDisplay: "none",
       alertShow: "block",
-      showUnconfirmed: false,
       TechScam: false,
       showData: false,
       techscamMain: false,
-      phishing: false,
-      pts: false,
       disallowed: false,
-      msgAlertPhishingForm:
+      deceptive: false,
+      phishing: false,
+      showUnconfirmed: false,
+      showResult: false,
+      msgAlert1: "",
+      msgAlert2:
         "Buying, Selling, Trading, or Exchanging Digital Currency is Disallowed",
     });
   };
@@ -381,14 +394,16 @@ class App extends Component {
       pTitle: "Impacted for Deceptive Products and Services",
       lpDisplay: "none",
       alertShow: "none",
-      showUnconfirmed: false,
+      msgAlert1: "",
+      msgAlert2: "",
       TechScam: false,
       showData: false,
       techscamMain: false,
-      phishing: false,
-      pts: false,
       crypto: false,
       disallowed: false,
+      phishing: false,
+      showUnconfirmed: false,
+      showResult: false,
     });
   };
   disallowedHandler = () => {
@@ -398,13 +413,16 @@ class App extends Component {
       pTitle: "Impacted for Disallowed Business / Model",
       lpDisplay: "none",
       alertShow: "none",
-      showUnconfirmed: false,
+      msgAlert1: "",
+      msgAlert2: "",
       TechScam: false,
       showData: false,
       techscamMain: false,
-      phishing: false,
-      pts: false,
       crypto: false,
+      deceptive: false,
+      phishing: false,
+      showUnconfirmed: false,
+      showResult: false,
     });
   };
 
@@ -413,19 +431,26 @@ class App extends Component {
       showData: true,
       title: "Data Collector",
       pTitle: "Welcome to Data Collector. Please fill out the required data.",
-      showUnconfirmed: false,
       TechScam: false,
       techscamMain: false,
-      phishing: false,
-      pts: false,
       crypto: false,
       disallowed: false,
+      deceptive: false,
+      phishing: false,
+      showUnconfirmed: false,
     });
   };
   //data
   ShowDataResult = () => {
     this.setState({
       showResult: true,
+      TechScam: false,
+      techscamMain: false,
+      crypto: false,
+      disallowed: false,
+      deceptive: false,
+      phishing: false,
+      showUnconfirmed: false,
     });
   };
 
@@ -528,9 +553,9 @@ class App extends Component {
                   noteHandler={this.noteHandler.bind(this)}
                   reviewHandler={this.reviewHandler.bind(this)}
                   fliping={this.state.fliping}
-                  msgTodo={this.state.msgTodo}
                   reproDisplay={this.state.reproDisplay}
-                  msgAlert={this.state.msgAlert}
+                  msgAlert1={this.state.msgAlert1}
+                  msgAlert2={this.state.msgAlert2}
                 />
               ) : this.state.TechScam === true ? (
                 <TechScamMO
@@ -549,11 +574,10 @@ class App extends Component {
                   reviewHandler={this.reviewHandler.bind(this)}
                   reproHandler={this.reproHandler.bind(this)}
                   todoBtn={this.todos.bind(this)}
-                  todoState={this.state.todo}
                   fliping={this.state.fliping}
-                  msgTodo={this.state.msgTodo}
                   reproDisplay={this.state.reproDisplay}
-                  msgAlertScreenShot={this.state.msgAlertScreenShot}
+                  msgAlert1={this.state.msgAlert1}
+                  msgAlert2={this.state.msgAlert2}
                 />
               ) : this.state.showData ? (
                 <div>
@@ -607,9 +631,9 @@ class App extends Component {
                   todoBtn={this.todos.bind(this)}
                   todoState={this.state.todo}
                   fliping={this.state.fliping}
-                  msgTodo={this.state.msgTodo}
                   reproDisplay={this.state.reproDisplay}
-                  msgAlertScreenShot={this.state.msgAlertScreenShot}
+                  msgAlert1={this.state.msgAlert1}
+                  msgAlert2={this.state.msgAlert2}
                 />
               ) : this.state.phishing === true ? (
                 <Phishing
@@ -630,11 +654,10 @@ class App extends Component {
                   todoBtn={this.todos.bind(this)}
                   todoState={this.state.todo}
                   fliping={this.state.fliping}
-                  msgTodo={this.state.msgTodo}
                   msgLP={this.state.msgLP}
                   reproDisplay={this.state.reproDisplay}
-                  msgAlertScreenShot={this.state.msgAlertScreenShot}
-                  msgAlertPhishingForm={this.state.msgAlertPhishingForm}
+                  msgAlert1={this.state.msgAlert1}
+                  msgAlert2={this.state.msgAlert2}
                 />
               ) : this.state.techscamMain ? (
                 <TechScamMain
@@ -655,11 +678,10 @@ class App extends Component {
                   todoBtn={this.todos.bind(this)}
                   todoState={this.state.todo}
                   fliping={this.state.fliping}
-                  msgTodo={this.state.msgTodo}
                   msgLP={this.state.msgLP}
                   reproDisplay={this.state.reproDisplay}
-                  msgAlertScreenShot={this.state.msgAlertScreenShot}
-                  msgAlertPhishingForm={this.state.msgAlertPhishingForm}
+                  msgAlert1={this.state.msgAlert1}
+                  msgAlert2={this.state.msgAlert2}
                 />
               ) : this.state.crypto ? (
                 <Crypto
@@ -681,9 +703,9 @@ class App extends Component {
                   todoBtn={this.todos.bind(this)}
                   todoState={this.state.todo}
                   fliping={this.state.fliping}
-                  msgTodo={this.state.msgTodo}
                   reproDisplay={this.state.reproDisplay}
-                  msgAlertPhishingForm={this.state.msgAlertPhishingForm}
+                  msgAlert1={this.state.msgAlert1}
+                  msgAlert2={this.state.msgAlert2}
                   alertShow={this.state.alertShow}
                 />
               ) : this.state.deceptive ? (
@@ -706,9 +728,9 @@ class App extends Component {
                   todoBtn={this.todos.bind(this)}
                   todoState={this.state.todo}
                   fliping={this.state.fliping}
-                  msgTodo={this.state.msgTodo}
                   reproDisplay={this.state.reproDisplay}
-                  msgAlertScreenShot={this.state.msgAlertScreenShot}
+                  msgAlert1={this.state.msgAlert1}
+                  msgAlert2={this.state.msgAlert2}
                 />
               ) : this.state.disallowed ? (
                 <Disallowed
@@ -730,9 +752,9 @@ class App extends Component {
                   todoBtn={this.todos.bind(this)}
                   todoState={this.state.todo}
                   fliping={this.state.fliping}
-                  msgTodo={this.state.msgTodo}
                   reproDisplay={this.state.reproDisplay}
-                  msgAlertScreenShot={this.state.msgAlertScreenShot}
+                  msgAlert1={this.state.msgAlert1}
+                  msgAlert2={this.state.msgAlert2}
                 />
               ) : null}
             </div>

@@ -202,27 +202,6 @@ div.col {
   text-decoration: "underline overline";
 }
 
-@media screen and (max-width: 1000px) {
-  .btn {
-    width: 11vw;
-    height: 3vh;
-    font-size: 0.9rem;
-  }
-  .footer {
-    top: 94%;
-    left: 42%;
-    font-size: 1rem;
-  }
-
-  .main {
-    grid-template-columns: 15% 70% 15%;
-    grid-template-rows: 1;
-
-    width: 100vw;
-    height: 95vh;
-  }
-}
-
 @media screen and (max-width: 1366px) and (max-height: 768px) {
   .btn {
     width: 13vw;
@@ -269,16 +248,13 @@ div.col {
   }
 
   .reportPage {
-    position: absolute;
-    top: 50%;
-    left: 17%;
-    width: 70vw;
+    width: 70%;
     background-color: white;
     opacity: 1;
     color: black;
-    padding-top: 10px;
+    padding: 10px;
     border-radius: 10px;
-    border: 4px gray double;
+    border: 4px gray solid;
   }
   .reset {
   }

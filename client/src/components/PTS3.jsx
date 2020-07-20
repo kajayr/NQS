@@ -168,8 +168,11 @@ const PTS3 = (props) => {
               style={{ display: props.lpDisplay }}
               className={styles.detailsContext}
             >
-              <Col style={{ padding: 0 }} md="12">
-                <Alert color="primary">{props.msgAlert}</Alert>
+              <Col className={styles.alert} md="12">
+                <Alert color="primary">{props.msgAlert1}</Alert>
+              </Col>
+              <Col className={styles.alert} md="12">
+                <Alert color="primary">{props.msgAlert2}</Alert>
               </Col>
             </Row>
           </fieldset>

@@ -172,8 +172,11 @@ const Unconfirmed = (props) => {
               style={{ display: props.reproDisplay }}
               className={styles.detailsContext}
             >
-              <Col md="12" className="align-self-center white ">
-                <Alert color="primary">{props.msgAlert}</Alert>
+              <Col className={styles.alert} md="12">
+                <Alert color="primary">{props.msgAlert1}</Alert>
+              </Col>
+              <Col className={styles.alert} md="12">
+                <Alert color="primary">{props.msgAlert2}</Alert>
               </Col>
             </Row>
           </fieldset>

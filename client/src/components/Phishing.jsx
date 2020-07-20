@@ -116,7 +116,10 @@ const Phishing = (props) => {
                 />
               </Col>
             </Row>
-            <Row style={{ display: props.reproDisplay }}>
+            <Row
+              className={styles.detailsContext}
+              style={{ display: props.reproDisplay }}
+            >
               <Col md="3">
                 <span style={{ display: "inline" }}>URL Repros to:</span>{" "}
               </Col>
@@ -154,11 +157,11 @@ const Phishing = (props) => {
               </Col>
             </Row>
             <Row className={styles.detailsContext}>
-              <Col style={{ padding: 0 }} md="12">
-                <Alert color="primary">{props.msgAlertScreenShot}</Alert>
+              <Col className={styles.alert} md="12">
+                <Alert color="primary">{props.msgAlert1}</Alert>
               </Col>
-              <Col style={{ padding: 0 }} md="12">
-                <Alert color="primary">{props.msgAlertPhishingForm}</Alert>
+              <Col className={styles.alert} md="12">
+                <Alert color="primary">{props.msgAlert2}</Alert>
               </Col>
             </Row>
           </fieldset>
