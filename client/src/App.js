@@ -62,7 +62,6 @@ class App extends Component {
       note: "",
       reviewName: "",
       date: new Date().toLocaleString(),
-      todo: "underline",
       msgLP: "",
       fliping: "",
       reproDisplay: "",
@@ -71,6 +70,8 @@ class App extends Component {
       alertShow: "none",
       lpDisplay: "",
       dataCount: 0,
+      SubmittedDataMSG: false,
+      dataMsg: "",
     };
     //states
     this.unConfirmedHandler.bind(this);
@@ -84,6 +85,7 @@ class App extends Component {
     this.showReport.bind(this);
     this.todos.bind(this);
   }
+
   //options
   todos = (e) => {
     let value = e.target.checked;
@@ -267,7 +269,7 @@ class App extends Component {
         "Unconfirmed. Not enough strong evidence to impact for Phishing or TechScam MO",
       msgLP: "Ads, keywords and LP are all related to the campaign.",
       fliping: "No evidence shown in change history of flipping.",
-      reproDisplay: "none",
+      reproDisplay: "block",
       lpDisplay: "block",
       msgAlert1: "",
       msgAlert2: "",
@@ -460,7 +462,7 @@ class App extends Component {
   inputData = (e) => {
     e.preventDefault();
     const value = e.target.value.toLowerCase();
-    this.setState({ inputData: value });
+    this.setState({ dataMsg: value });
   };
   sendData = (e) => {
     e.preventDefault();
@@ -468,7 +470,13 @@ class App extends Component {
       title: this.state.inputData,
       num: this.state.dataCount,
     };
+    this.setState({ SubmittedDataMSG: true });
 
+    setTimeout(() => {
+      this.setState({
+        SubmittedDataMSG: false,
+      });
+    }, 2000);
     axios({
       url: "/api/save",
       method: "POST",
@@ -519,6 +527,7 @@ class App extends Component {
       </p>
     ));
   };
+
   // render
   render() {
     return (
@@ -599,7 +608,12 @@ class App extends Component {
                         name="test"
                         id="DataKey"
                         placeholder="keyword"
-                      />
+                      />{" "}
+                      {this.state.SubmittedDataMSG ? (
+                        <span style={{ color: "#ade498" }}>
+                          Your data {this.state.dataMsg} have successfully added
+                        </span>
+                      ) : null}
                     </FormGroup>
                     {this.state.showResult
                       ? this.displayDatabase(this.state.database)
