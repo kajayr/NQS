@@ -248,13 +248,14 @@ div.col {
   }
 
   .reportPage {
-    width: 70%;
+    width: 80%;
     background-color: white;
     opacity: 1;
     color: black;
     padding: 10px;
     border-radius: 10px;
     border: 4px gray solid;
+    font-size: 0.8rem;
   }
   .reset {
   }

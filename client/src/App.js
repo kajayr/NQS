@@ -780,22 +780,6 @@ class App extends Component {
                     </div>
                   ) : null}{" "}
                   <br />
-                  {this.state.ads1 !== "" ? (
-                    <div>
-                      <p>Additional Details: </p>
-                      <span className={styles.finalContent}>
-                        Ads targeting: {this.state.ads1} {this.state.ads2}{" "}
-                        {this.state.ads3}
-                      </span>
-                    </div>
-                  ) : null}
-                  {this.state.binding1 !== "" ? (
-                    <span className={styles.finalContent}>
-                      Keywords bidding on: {this.state.binding1}
-                      {this.state.binding2}
-                      {this.state.binding3}
-                    </span>
-                  ) : null}
                   {this.state.lp === "Yes" ? (
                     <p className={styles.finalContent}>
                       {" "}
@@ -833,6 +817,23 @@ class App extends Component {
                     <p className={styles.finalContent}>
                       URL Repros to: {this.state.repro}
                     </p>
+                  ) : null}
+                  {this.state.ads1 !== "" ? (
+                    <div>
+                      <br />
+                      <p>Additional Details: </p>
+                      <span className={styles.finalContent}>
+                        Ads targeting: {this.state.ads1} {this.state.ads2}{" "}
+                        {this.state.ads3}
+                      </span>
+                    </div>
+                  ) : null}
+                  {this.state.binding1 !== "" ? (
+                    <span className={styles.finalContent}>
+                      Keywords bidding on: {this.state.binding1}
+                      {this.state.binding2}
+                      {this.state.binding3}
+                    </span>
                   ) : null}
                   {this.state.reviewName !== "" ? (
                     <p className={styles.handwriteen}>

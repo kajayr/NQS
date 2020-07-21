@@ -36,27 +36,54 @@
 //     return hasValue(boy, "age", 12);
 //   })
 // );
-let payload = {
-  title: "leo",
-  num: 0,
-};
+// let payload = {
+//   title: "leo",
+//   num: 0,
+// };
 
-let data = payload;
+// let data = payload;
 
-displayDatabase = (data) => {
-  function removeD(originalArray, prop) {
-    let newArray = [];
-    let lookupObject = {};
-    for (var i in originalArray) {
-      lookupObject[originalArray[i][prop]] = originalArray[i];
-    }
+// displayDatabase = (data) => {
+//   function removeD(originalArray, prop) {
+//     let newArray = [];
+//     let lookupObject = {};
+//     for (var i in originalArray) {
+//       lookupObject[originalArray[i][prop]] = originalArray[i];
+//     }
 
-    for (i in lookupObject) {
-      newArray.push(lookupObject[i]);
-    }
+//     for (i in lookupObject) {
+//       newArray.push(lookupObject[i]);
+//     }
 
-    return newArray;
+//     return newArray;
+//   }
+// };
+
+// console.log(displayDatabase(data));
+
+// function getLabels(keyword) {
+// 	const allLabels = ['NextActions', 'Someday_Actions', 'Costco', 'Alexa'];
+//   const result = allLabels
+//     .filter(function(x) {
+//       return x.toLowerCase().indexOf(keyword.toLowerCase()) > -1;
+//     });
+//   return result;
+// }
+
+import React from "react";
+
+class Labels extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      allLabels: ["NextActions", "Someday_Actions", "Costco", "Alexa"],
+    };
+    this.result = this.result.bind(this);
   }
-};
-
-console.log(displayDatabase(data));
+  result = () => {
+    console.log("works");
+  };
+  render() {
+    <button onClick={this.result}>click</button>;
+  }
+}
