@@ -71,7 +71,7 @@ class App extends Component {
       lpDisplay: "",
       dataCount: 0,
       SubmittedDataMSG: false,
-      dataMsg: "",
+      dataMsg: "Data has been updated successfully!",
     };
     //states
     this.unConfirmedHandler.bind(this);
@@ -462,7 +462,7 @@ class App extends Component {
   inputData = (e) => {
     e.preventDefault();
     const value = e.target.value.toLowerCase();
-    this.setState({ dataMsg: value });
+    this.setState({ inputData: value });
   };
   sendData = (e) => {
     e.preventDefault();
@@ -611,7 +611,7 @@ class App extends Component {
                       />{" "}
                       {this.state.SubmittedDataMSG ? (
                         <span style={{ color: "#ade498" }}>
-                          Your data {this.state.dataMsg} have successfully added
+                          {this.state.dataMsg}
                         </span>
                       ) : null}
                     </FormGroup>
